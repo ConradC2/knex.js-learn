@@ -1,10 +1,11 @@
 const express = require('express');
+const { development } = require('./knexfile.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV]);
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/movies', function(req, res) {
   knex
